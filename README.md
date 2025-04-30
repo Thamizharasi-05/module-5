@@ -10,10 +10,28 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    int length, breadth, area;
+    int *p1, *p2;
+
+    printf("Enter the length and breadth of the rectangle: ");
+    scanf("%d %d", &length, &breadth);
+
+    p1 = &length;
+    p2 = &breadth;
+
+    area = (*p1) * (*p2);
+    printf("Area of rectangle = %d\n", area);
+
+    return 0;
+}
+```
 ## OUTPUT
 		       	
-
+![Screenshot 2025-04-30 135800](https://github.com/user-attachments/assets/1b475ef4-4548-480a-9ce6-259ffab6421d)
 
 ## RESULT
 Thus the program to find area of rectangle using pointer has been executed successfully
@@ -34,10 +52,30 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+int main() {
+    char *str;
+
+    str = (char *)malloc(10 * sizeof(char)); // allocate memory
+    if (str == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    strcpy(str, "WELCOME");
+    printf("%s\n", str);
+
+    free(str); // free allocated memory
+    return 0;
+}
+```
 ## OUTPUT
 
-
+![Screenshot 2025-04-30 135936](https://github.com/user-attachments/assets/0d92800b-741f-4c9d-ac73-a06b9e225f0d)
 
 ## RESULT
 Thus the program to print 'WELCOME' using malloc() and free() has been executed successfully
@@ -60,10 +98,30 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Student {
+    char name[20];
+    int rollNo;
+    float marks;
+};
 
+int main() {
+    struct Student s;
+
+    printf("Enter student name, roll number, and marks: ");
+    scanf("%s %d %f", s.name, &s.rollNo, &s.marks);
+
+    printf("\nStudent Information:\n");
+    printf("Name: %s\nRoll No: %d\nMarks: %.2f\n", s.name, s.rollNo, s.marks);
+
+    return 0;
+}
+```
 ## OUTPUT
 
+![Screenshot 2025-04-30 140206](https://github.com/user-attachments/assets/1f711593-41d9-4498-9063-7067a2c6b711)
 
 ## RESULT
 
@@ -87,11 +145,38 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Employee {
+    char name[20];
+    int id;
+    float basic, hra, da, gross;
+};
+
+int main() {
+    struct Employee emp[3];
+    int i;
+
+    for(i = 0; i < 3; i++) {
+        printf("Enter name, ID, basic, HRA, and DA for employee %d: ", i+1);
+        scanf("%s %d %f %f %f", emp[i].name, &emp[i].id, &emp[i].basic, &emp[i].hra, &emp[i].da);
+        emp[i].gross = emp[i].basic + emp[i].hra + emp[i].da;
+    }
+
+    printf("\nEmployee Details:\n");
+    for(i = 0; i < 3; i++) {
+        printf("Name: %s | ID: %d | Gross Salary: %.2f\n", emp[i].name, emp[i].id, emp[i].gross);
+    }
+
+    return 0;
+}
+
+```
 
  ## OUTPUT
 
- 
+ ![Screenshot 2025-04-30 140401](https://github.com/user-attachments/assets/d297bd45-df54-45e4-ad02-a06f89069df8)
 
 ## RESULT
 
@@ -134,11 +219,46 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+    float average;
+};
+
+int main() {
+    struct Student s[2];
+    int i, j;
+
+    for(i = 0; i < 2; i++) {
+        printf("Enter name and roll number for student %d: ", i + 1);
+        scanf("%s %d", s[i].name, &s[i].rollno);
+
+        s[i].total = 0;
+        printf("Enter 5 subject marks: ");
+        for(j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+            s[i].total += s[i].subject[j];
+        }
+
+        s[i].average = s[i].total / 5.0;
+    }
+
+    for(i = 0; i < 2; i++) {
+        printf("\nStudent: %s\nTotal: %d\nAverage: %.2f\n", s[i].name, s[i].total, s[i].average);
+    }
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
- 
+ ![Screenshot 2025-04-30 140608](https://github.com/user-attachments/assets/c420e035-6ab0-4c69-9fd2-330a67319e37)
 
 ## RESULT
 
